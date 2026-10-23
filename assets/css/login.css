@@ -1,0 +1,109 @@
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --navy:#0f172a; --text:#0f172a; --muted:#64748b; --soft:#94a3b8;
+  --line:#e2e8f0; --field:#f8fafc; --teal:#0d9488; --blue:#2d9cff; --danger:#b91c1c;
+}
+html,body{height:100%;margin:0}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.login-page{display:flex;min-height:100vh}
+
+/* ---------- left hero ---------- */
+.hero{
+  position:relative;flex:0 0 48.7%;display:flex;align-items:flex-end;
+  border-right:3px solid var(--blue);
+  background:
+    linear-gradient(180deg,rgba(15,23,42,.30) 0%,rgba(15,23,42,.50) 50%,rgba(15,23,42,.93) 100%),
+    url('../images/campus.jpg') center/cover no-repeat,
+    #1e293b;
+}
+.hero-content{padding:0 56px 56px;color:#fff;max-width:560px}
+.hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:600;font-size:15px}
+.hero-brand img{width:30px;height:30px;object-fit:contain}
+.hero h1{margin:0 0 10px;font-size:clamp(28px,2.6vw,38px);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.hero p{margin:0;font-size:clamp(15px,1.25vw,18px);font-weight:400;color:#e2e8f0}
+
+/* ---------- right panel ---------- */
+.panel{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:48px 24px 72px}
+.form-wrap{width:100%;max-width:440px}
+.brand{display:flex;align-items:center;gap:10px;font-size:17px;color:#475569}
+.brand img{width:28px;height:28px;object-fit:contain}
+.brand b{color:var(--text);font-weight:700}
+h2{margin:38px 0 6px;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.sub{margin:0 0 30px;font-size:13px;color:var(--muted);line-height:1.5}
+
+.field{margin-bottom:18px}
+label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}
+.label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.label-row label{margin:0}
+.link{font-size:12px;font-weight:500;color:var(--teal);text-decoration:none}
+.link:hover{text-decoration:underline}
+
+.input{position:relative}
+.input input{
+  width:100%;height:48px;padding:0 44px 0 42px;font:inherit;font-size:14px;color:var(--text);
+  background:var(--field);border:1px solid var(--line);border-radius:10px;outline:none;
+  transition:border-color .15s,box-shadow .15s,background .15s;
+}
+.input input::placeholder{color:#a7b0be}
+.input input:focus{background:#fff;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+.input.invalid input{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+.ico{position:absolute;left:14px;top:50%;width:17px;height:17px;transform:translateY(-50%);color:#64748b;pointer-events:none}
+.toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:none;color:#64748b;cursor:pointer;border-radius:8px;display:grid;place-items:center}
+.toggle:hover{color:var(--text)}
+.toggle svg{width:17px;height:17px}
+[hidden]{display:none!important}
+
+.check{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:#475569;cursor:pointer;margin:2px 0 30px;user-select:none}
+.check input{position:absolute;opacity:0;width:0;height:0}
+.check .box{width:15px;height:15px;border:1px solid #cbd5e1;border-radius:4px;background:#fff;display:grid;place-items:center;transition:.15s}
+.check input:checked + .box{background:var(--navy);border-color:var(--navy)}
+.check input:checked + .box::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.check input:focus-visible + .box{box-shadow:0 0 0 3px rgba(13,148,136,.25)}
+
+.btn{
+  width:100%;height:50px;display:flex;align-items:center;justify-content:center;gap:8px;
+  font:inherit;font-size:14px;font-weight:600;color:#fff;background:var(--navy);
+  border:0;border-radius:10px;cursor:pointer;box-shadow:0 10px 22px rgba(15,23,42,.28);
+  transition:transform .1s,box-shadow .15s,background .15s;
+}
+.btn:hover{background:#1e293b}
+.btn:active{transform:translateY(1px);box-shadow:0 6px 14px rgba(15,23,42,.25)}
+.btn:disabled{opacity:.75;cursor:not-allowed}
+.btn .arrow{width:15px;height:15px}
+.btn.small{width:auto;padding:0 22px;height:42px;margin:10px auto 0}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.note{display:flex;align-items:center;gap:7px;margin:18px 0 0;font-size:11px;color:var(--muted);padding-bottom:22px;border-bottom:1px solid var(--line)}
+.note svg{width:13px;height:13px;flex:none}
+
+.help{text-align:center;margin-top:22px}
+.help p{margin:0 0 8px;font-size:11px;color:var(--muted)}
+.help a{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text);text-decoration:none}
+.help a:hover{text-decoration:underline}
+.help svg{width:13px;height:13px}
+
+footer{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:10px;color:var(--soft)}
+
+.alert{margin-bottom:18px;padding:11px 14px;font-size:12.5px;line-height:1.4;color:var(--danger);background:#fef2f2;border:1px solid #fecaca;border-radius:10px}
+
+/* ---------- plain pages (dashboard, forgot password) ---------- */
+body.plain{display:grid;place-items:center;background:var(--field)}
+.dash{background:#fff;border:1px solid var(--line);border-radius:16px;padding:40px 44px;max-width:480px;text-align:center}
+.dash h1{margin:0 0 8px;font-size:24px}
+.dash p{margin:8px 0}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{display:none}
+  .panel{padding-top:40px}
+}
+
+/* ---------- dashboard table ---------- */
+.dash.wide{max-width:720px;width:92%;text-align:left}
+.dash.wide .btn.small{display:flex;margin:22px 0 0}
+.mods{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.mods th,.mods td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left}
+.mods th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
